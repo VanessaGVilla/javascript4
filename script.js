@@ -19,6 +19,8 @@ function calculateCircumference(radius) {
 
   console.log(calculateCircumference(5));
 // expected output: 31.41592653589793  
+ 
+
 
 // 3. Write a function searchString that takes a character and then returns how many times it appears in another string argument.
 // Example Output:
