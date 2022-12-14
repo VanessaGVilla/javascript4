@@ -1,46 +1,71 @@
-// 1. Write a function min that takes two numbers and returns the smallest one of the pair.
-// Examples:
-console.log(Math.min(10,6,));
-// expected output: 6
+// 1. Write a range function that takes two arguments, start and end, and returns an array
+// containing all the numbers from start up to (and including) end.
+// Example output:
+// console.log(range(1, 10)); // outputs [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-// console.log(min(0, 10)); // will output 0.
-// console.log(min(0, -10)); // will output -10
 
-// 2. Write a function that takes the radius of a circle and outputs it’s approximate circumference (the formula for circumference is 2 *pi * radius, you may use 3.14 for pi).
-// Example Output:
-// console.log(calculateCircumference(5)); // will output 31.4
-
-function calculateCircumference(radius) {
-    return 2 * Math.PI * radius;
-  }
+function range(start,end) {
+  let array = [];
  
-  console.log(Math.PI);
-  // expected output: 3.14159265358979
-
-  console.log(calculateCircumference(5));
-// expected output: 31.41592653589793  
- 
-
-
-// 3. Write a function searchString that takes a character and then returns how many times it appears in another string argument.
-// Example Output:
-// console.log(searchString(“s”, “mississippi”)); // will output 4
-// console.log(searchString(“q”, “mississippi”)); // will output 0
-
-function char_count(str, letter)
-{
- var letter_Count = 0;
- for (var position = 0; position < str.length; position++)
- {
-    if (str.charAt(position) == letter)
-      {
-      letter_Count += 1;
-      }
+  for (let counter = 0; counter < end; counter++) {
+    array.push(start);
+    start += 1;
   }
-  return letter_Count;
+  return array;
+  }
+  console.log(range(1,10)); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+// 2. Next, write a sum function that takes an array of numbers and returns the sum of
+// these numbers. Run the example program and see whether it does indeed return 55.
+// Example output:
+// console.log(sum(range(1, 10))); // returns 55
+
+    sum = (numbersArray) => {
+    let sum=0;
+     numbersArray.forEach((i)=>{
+      sum+=i;
+     })
+     return sum;
+   }
+   console.log(sum(range(1, 10)));
+// → 55
+
+
+    // 3. Arrays have a reverse method that changes the array by inverting the order in which
+    // its elements appear. For this exercise, write two functions, reverseArray and
+    // reverseArrayInPlace. The first, reverseArray, takes an array as an argument and
+// produces a new array that has the same elements in the inverse order. The second,
+// reverseArrayInPlace, does what the built-in reverse method does: it modifies the array
+// given as an argument by reversing its elements. Neither may use the standard reverse
+// method.
+// Example output for reverseArray:
+// console.log(reverseArray(["A", "B", "C"])); // outputs ["C", "B", "A"];
+// Example output for reverseArrayInPlace:
+// let arrayValue = [1, 2, 3, 4, 5];
+// reverseArrayInPlace(arrayValue);
+// console.log(arrayValue); // outputs [5, 4, 3, 2, 1]
+
+    reverseArray = (arr) => {
+ let reversed=[]
+ for(let i=arr.length-1; i>=0; i--){
+      reversed.push(arr[i]); 
+    }
+  return reversed;
 }
-
-console.log(char_count('mississippi', 'i'));
-console.log(char_count('mississippi', 'z'));
-
-
+console.log(reverseArray(["A", "B", "C"]));
+// → ["C", "B", "A"];
+reverseArrayInPlace = (arr) => {
+  let count=0;
+  for(let i=0; i<=Math.floor(arr.length/2); i++){
+    var ascendingEl= arr[i];
+ 
+    arr[i] = arr[arr.length-1-i]
+    arr[arr.length-1-i]=ascendingEl;
+  }
+    return arr;
+    }
+var arrayValue = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
+// → [5, 4, 3, 2, 1]
